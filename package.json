@@ -1,0 +1,23 @@
+{
+  "name": "node-api",
+  "version": "1.0.0",
+  "description": "This repository is for all the coding that I did as a practice for a Pluralsight Course for NODE API.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SayantoRoy/NODE-API.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SayantoRoy/NODE-API/issues"
+  },
+  "homepage": "https://github.com/SayantoRoy/NODE-API#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

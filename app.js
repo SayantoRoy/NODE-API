@@ -9,9 +9,10 @@ const book = require('./models/bookModel');
 
 bookRoute.route('/books')
 .get((req, res) => {
-  const response = [{ Hello : "Kaise Ho BRO>??" , Nameste : "How Are YOu BRO?>?"}
-                    , { Hello : "Kaise Ho BRO>??" , Nameste : "How Are YOu BRO?>?"}];
-  res.json(response);
+  book.find((err , bookks) => {
+    if(err){ return res.send(err);}
+    return res.json(bookks);
+  })
 });
 
 app.use('/api',bookRoute);

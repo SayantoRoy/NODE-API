@@ -1,7 +1,11 @@
 const express = require('express');
+const mongoose = require('mongoose');
 
 const app = express();
+const db = mongoose.connect('mongodb://localhost/bookAPI'); 
 const bookRoute = express.Router();
+const book = require('./models/bookModel');
+
 
 bookRoute.route('/books')
 .get((req, res) => {
@@ -11,6 +15,7 @@ bookRoute.route('/books')
 });
 
 app.use('/api',bookRoute);
+
 
 
 const port = process.env.PORT || 3000;

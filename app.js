@@ -9,7 +9,8 @@ const book = require('./models/bookModel');
 
 bookRoute.route('/books')
 .get((req, res) => {
-  const { query } = req;
+  const query = {};
+  if(req.query.title){ query.title = req.query.genre;}
   book.find(query , (err , bookks) => {
     if(err){ return res.send(err);}
     return res.json(bookks);

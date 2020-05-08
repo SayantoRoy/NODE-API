@@ -10,8 +10,17 @@ const book = require('./models/bookModel');
 bookRoute.route('/books')
 .get((req, res) => {
   const query = {};
-  if(req.query.title){ query.title = req.query.genre;}
+  if(req.query.genre){ query.genre = req.query.genre;}
   book.find(query , (err , bookks) => {
+    if(err){ return res.send(err);}
+    return res.json(bookks);
+  })
+});
+
+bookRoute.route('/books/:id')
+.get((req, res) => {
+  
+  book.findById(req.params.id, (err , bookks) => {
     if(err){ return res.send(err);}
     return res.json(bookks);
   })

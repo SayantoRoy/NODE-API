@@ -36,6 +36,10 @@ app.get('/' , (req , res) => {
     res.send("Welcome to the API first");
 });
 
+app.get('/Doki' , (req , res) => {
+  res.send("Welcome to the Doki");
+});
+
 app.listen(port , () => {
     console.log(`We are listening on ${port}`);
 });

@@ -1,13 +1,20 @@
 const express = require('express');
 const mongoose = require('mongoose');
-
+const bodyParser = require('body-parser');
 const app = express();
 const db = mongoose.connect('mongodb://localhost/bookAPI'); 
 const bookRoute = express.Router();
 const book = require('./models/bookModel');
 
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
 
 bookRoute.route('/books')
+.post((req , res)=>{
+  const body = new book(req.body);
+  console.log(body);
+  res.send(body);
+})
 .get((req, res) => {
   const query = {};
   if(req.query.genre){ query.genre = req.query.genre;}

@@ -12,8 +12,8 @@ app.use(bodyParser.json());
 bookRoute.route('/books')
 .post((req , res)=>{
   const body = new book(req.body);
-  console.log(body);
-  res.send(body);
+  body.save();
+  return res.json(body);
 })
 .get((req, res) => {
   const query = {};

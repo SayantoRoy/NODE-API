@@ -19,13 +19,26 @@ function routers(book)
   })
 });
 
+bookRoute.use('/books/:id' , (req, res, next) => {
+    book.findById(req.params.id, (err , bookks) => {
+        if(err){ return res.send(err);}
+        if(bookks){req.book = bookks; return next();}
+        return res.sendStatus(404);
+      });
+});
+
 bookRoute.route('/books/:id')
 .get((req, res) => {
-  
-  book.findById(req.params.id, (err , bookks) => {
-    if(err){ return res.send(err);}
-    return res.json(bookks);
-  })
+  res.json(req.book)
+})
+.put((req,res) => {
+   const bookks = req.book;
+        bookks.title = req.body.title;
+        bookks.author = req.body.author;
+        bookks.genre = req.body.genre;
+        bookks.read = req.body.read;
+        bookks.save();
+        return res.json(bookks);
 });
 
 return bookRoute;
